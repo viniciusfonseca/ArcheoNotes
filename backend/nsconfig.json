@@ -1,0 +1,8 @@
+{
+    "directories": [
+        "src/core",
+        "src/services",
+        "src/services/Note",
+        "src/services/User"
+    ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node src",
+    "test": "jest --watch",
+    "dev": "nodemon src",
+    "dev:test": "cross-env NODE_ENV=test nodemon src",
+    "ns": "node scripts/generateNamespaces"
+  },
+  "dependencies": {
+    "@types/sequelize": "^4.28.8",
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "sequelize": "^5.21.2",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1"
+  }
+}

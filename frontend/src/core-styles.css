@@ -1,0 +1,29 @@
+.flex-row {
+    display: flex;
+  }
+  
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex {
+    flex: 1;
+  }
+  
+  .center-a {
+    justify-content: center;
+  }
+  
+  .center-b {
+    align-items: center;
+  }
+  
+  .flex-end {
+    justify-content: flex-end;
+  }
+  
+  .fit-parent {
+    width: 100%;
+    height: 100%
+  }

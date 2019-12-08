@@ -1,0 +1,2 @@
+require('./globals')
+require('./server')
