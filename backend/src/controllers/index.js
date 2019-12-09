@@ -10,7 +10,7 @@ app.get('/ping', (_, res) =>
     res.status(200).send('pong')
 )
 
-app.get('/reset', async () => {
+app.get('/reset', async (req, res) => {
     try {
         await App.Models.note.destroy({ where: {} })
         res.status(200).send(`All notes have been deleted from database.`)

@@ -25,16 +25,31 @@ import './theme/variables.css';
 
 /* App Core styles */
 import './core-styles.css'
+import { NoteForm } from './pages/NoteForm';
+import { AppContext } from './core/AppContext';
+import { useObjectState } from './core/useObjectState';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+
+  const [ getState, setAppState ] = useObjectState({
+    notes: []
+  })
+
+  return (
+    <AppContext.Provider value={{ ...getState(), setAppState }}>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path="/home" component={Home} exact />
+            <Route path="/add-note" component={NoteForm} exact />
+            <Route path="/edit-note/:id" component={NoteForm} exact />
+            <Route path="/note/:id" component={() => null} exact />
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    </AppContext.Provider>
+  );
+}
 
 export default App;

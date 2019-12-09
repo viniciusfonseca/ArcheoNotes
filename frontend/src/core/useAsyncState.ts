@@ -1,16 +1,23 @@
 import { useObjectState } from "./useObjectState"
 import { useEffect } from "react"
 
+interface AsyncStateHookParams {
+    initialData?: any,
+    fetchData(): Promise<any>
+}
+
 export function useAsyncState({
+    initialData = null,
     fetchData = () => Promise.resolve()
-}, deps = []) {
+}: AsyncStateHookParams, deps = []) {
 
     const [ getState, setState ] = useObjectState({
-        data: null,
+        data: initialData,
+        error: "",
         loading: true
     })
 
-    const { data, loading } = getState()
+    const { data, loading, error } = getState()
 
     useEffect(() => {
         setState({ loading: true })
@@ -19,7 +26,9 @@ export function useAsyncState({
 
     return {
         data,
+        error,
         loading,
         setData(data: any) { setState({ data, loading: false }) },
+        setError(error: string) { setState({ error }) }
     }
 }
